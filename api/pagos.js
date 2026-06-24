@@ -1,6 +1,10 @@
 const reservas = new Map(); // El cuaderno donde anotamos las reservas
 let tiempoExpiracion = 10000; // El límite de tiempo permitido (10 segundos)
 
+function configurarTiempoExpiracion(nuevoTiempo) {
+    tiempoExpiracion = nuevoTiempo;
+}
+
 // Anotar la hora de creación
 function reservar(productoId, usuarioId) {
     const reservaId = Math.random().toString(36).slice(2); // Creamos un ID único para la reserva
@@ -31,3 +35,4 @@ function confirmar(reservaId) {
     // Si la resta dio menos de 10 segundos, todo está perfecto y se confirma el pago
     return { ok: true, reservaId };
 }
+module.exports = { reservar, confirmar, configurarTiempoExpiracion, reservas };
